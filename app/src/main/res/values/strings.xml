@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Recall Quest 1.0</string>
+    <string name="moves_to_the_next_page_for_practice_games">Moves to the next page for practice games</string>
+    <string name="practice">Practice</string>
+    <string name="moves_to_multiplayer_setup">Moves to multiplayer setup</string>
+    <string name="multiplayer">Multiplayer</string>
+    <string name="stats">Stats</string>
 </resources>
