@@ -5,7 +5,7 @@ public class MainActivity {
 System.out.println("Hello it's my first App using Java");
 
 
-    System.out.println("Creating changes in master file to see changes in collab computer");
+    System.out.println("Creating changes in master file to see changes in collaborator computer");
 
     }
 }
