@@ -1,3 +1,0 @@
-shall we start?
-yes/no
-answer: Yes

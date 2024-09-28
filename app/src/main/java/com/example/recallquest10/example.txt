@@ -1,6 +1,0 @@
-This is test to check whether we can collab or not:
-
-Options: Yes / No
-
-Your answer:
-yes
