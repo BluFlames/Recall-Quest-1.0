@@ -5,4 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    tools:ignore="MissingClass"/>
+    tools:ignore="MissingClass">
+
+    <EditText
+        android:id="@+id/editTextTextMultiLine2"
+        android:layout_width="358dp"
+        android:layout_height="332dp"
+        android:clickable="false"
+        android:inputType="none"
+        android:fontFamily="monospace"
+        android:gravity="center_horizontal"
+        android:keepScreenOn="true"
+        android:lineSpacingExtra="8sp"
+        android:text="Welcome to Recall Quest : The Ultimate Game"
+        android:textAlignment="center"
+        android:textColor="#0D0D0D"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.119" />
+
+    <Button
+        android:id="@+id/button"
+        style="@android:style/Widget.DeviceDefault.Button"
+        android:layout_width="117dp"
+        android:layout_height="67dp"
+        android:background="@drawable/rounded_button"
+        android:text="Start"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#FBC02D"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine2" />
+</androidx.constraintlayout.widget.ConstraintLayout>
