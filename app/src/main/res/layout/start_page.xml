@@ -31,7 +31,7 @@
         tools:ignore="Autofill,HardcodedText,LabelFor,TextSizeCheck" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/start_button"
         style="@android:style/Widget.DeviceDefault.Button"
         android:layout_width="192dp"
         android:layout_height="64dp"
