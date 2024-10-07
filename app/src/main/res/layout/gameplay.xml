@@ -1,0 +1,132 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alignmentMode="alignMargins"
+        android:columnCount="4"
+        android:rowCount="4"
+        android:layout_gravity="center"
+        android:useDefaultMargins="true">
+
+        <!-- Define 16 Buttons (4x4 grid) -->
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="1"
+            android:onClick="onGridButtonClick"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="2"
+            android:onClick="onGridButtonClick"/>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="3"
+            android:onClick="onGridButtonClick"/>
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="4"
+            android:onClick="onGridButtonClick"/>
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="5"
+            android:onClick="onGridButtonClick"/>
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="6"
+            android:onClick="onGridButtonClick"/>
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="7"
+            android:onClick="onGridButtonClick"/>
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="8"
+            android:onClick="onGridButtonClick"/>
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="9"
+            android:onClick="onGridButtonClick"/>
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="10"
+            android:onClick="onGridButtonClick"/>
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="11"
+            android:onClick="onGridButtonClick"/>
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="12"
+            android:onClick="onGridButtonClick"/>
+
+        <Button
+            android:id="@+id/button13"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="13"
+            android:onClick="onGridButtonClick"/>
+
+        <Button
+            android:id="@+id/button14"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="14"
+            android:onClick="onGridButtonClick"/>
+
+        <Button
+            android:id="@+id/button15"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="15"
+            android:onClick="onGridButtonClick"/>
+
+        <Button
+            android:id="@+id/button16"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="16"
+            android:onClick="onGridButtonClick"/>
+
+    </GridLayout>
+</LinearLayout>
