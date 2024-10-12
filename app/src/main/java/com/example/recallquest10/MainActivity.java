@@ -10,16 +10,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.start_page); // Link to your start page XML file
+        setContentView(R.layout.a1_start_page); // Link to your start page XML file
 
         // Find the Start button and set a click listener
         Button startButton = findViewById(R.id.start_button);
 
         // Start button's click event
         startButton.setOnClickListener(v -> {
-            // Intent to navigate to GameActivity
-            Intent intent = new Intent(MainActivity.this, GameActivity.class);
-            startActivity(intent); // Start GameActivity when the Start button is pressed
+            // Intent to navigate to AfterStartButton
+            Intent intent = new Intent(MainActivity.this, AfterStartButton.class);
+            startActivity(intent); // Start AfterStartButton when the Start button is pressed
         });
     }
 }

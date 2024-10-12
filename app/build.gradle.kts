@@ -8,9 +8,9 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.recallquest10"
-        minSdk = 21
-        targetSdk = 34
+        applicationId = "com.miniproject.recallquest10"
+        minSdk = 28
+        targetSdk = 28
         versionCode = 1
         versionName = "1.0"
 
@@ -18,6 +18,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        versionNameSuffix = "Phase 1"
     }
 
     buildTypes {

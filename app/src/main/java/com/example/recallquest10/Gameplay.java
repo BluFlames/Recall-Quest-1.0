@@ -1,11 +1,11 @@
 package com.example.recallquest10;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-public class StatisticsActivity extends AppCompatActivity {
-    @Override
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Gameplay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.a6_statistics);
+        setContentView(R.layout.a4_gameplay);
     }
 }

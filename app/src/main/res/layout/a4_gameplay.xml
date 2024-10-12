@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="20dp">
 
     <GridLayout
         android:id="@+id/gridLayout"
@@ -22,128 +22,148 @@
             android:id="@+id/button1"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="1"
+            android:background="#FFD600"
             android:onClick="onGridButtonClick"
+            android:text="B1"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="2"
+            android:background="#2962FF"
             android:onClick="onGridButtonClick"
+            android:text="B2"
+            android:textColor="#F1F8E9"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="3"
+            android:background="#64DD17"
             android:onClick="onGridButtonClick"
+            android:text="B3"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button4"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="4"
+            android:background="#00C853"
             android:onClick="onGridButtonClick"
+            android:text="B4"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button5"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="5"
+            android:background="#F4511E"
             android:onClick="onGridButtonClick"
+            android:text="B5"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button6"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="6"
+            android:background="#6200EA"
             android:onClick="onGridButtonClick"
+            android:text="B6"
+            android:textColor="#E1BEE7"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button7"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="7"
+            android:background="#DD2C00"
             android:onClick="onGridButtonClick"
+            android:text="B7"
+            android:textColor="#F9FBE7"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button8"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="8"
+            android:background="#FFB300"
             android:onClick="onGridButtonClick"
+            android:text="B8"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button9"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="9"
+            android:background="#FFEA00"
             android:onClick="onGridButtonClick"
+            android:text="B9"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button10"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="10"
+            android:background="#00BFA5"
             android:onClick="onGridButtonClick"
+            android:text="B10"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button11"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="11"
+            android:background="#00B8D4"
             android:onClick="onGridButtonClick"
+            android:text="B11"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button12"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="12"
+            android:background="#00C853"
             android:onClick="onGridButtonClick"
+            android:text="B12"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button13"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="13"
+            android:background="#00E676"
             android:onClick="onGridButtonClick"
+            android:text="B13"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button14"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="14"
+            android:background="#1DE9B6"
             android:onClick="onGridButtonClick"
+            android:text="B14"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button15"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="15"
+            android:background="#651FFF"
             android:onClick="onGridButtonClick"
+            android:text="B15"
+            android:textColor="#CFD8DC"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button16"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="16"
+            android:background="#F50057"
             android:onClick="onGridButtonClick"
+            android:text="B16"
             tools:ignore="HardcodedText" />
 
     </GridLayout>

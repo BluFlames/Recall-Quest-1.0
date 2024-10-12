@@ -8,7 +8,7 @@
     tools:ignore="MissingClass">
 
     <EditText
-        android:id="@+id/editTextTextMultiLine2"
+        android:id="@+id/editTextTextMultiLine"
         android:layout_width="358dp"
         android:layout_height="332dp"
         android:background="@null"
@@ -33,8 +33,8 @@
     <Button
         android:id="@+id/start_button"
         style="@android:style/Widget.DeviceDefault.Button"
-        android:layout_width="253dp"
-        android:layout_height="98dp"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
         android:background="@drawable/rounded_button"
         android:text="Start"
         android:textAlignment="center"
@@ -44,6 +44,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine2"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
         tools:ignore="HardcodedText,TextSizeCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
