@@ -1,170 +1,712 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:layout_height="match_parent">
 
     <GridLayout
-        android:id="@+id/gridLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:alignmentMode="alignMargins"
+        android:id="@+id/cardGrid"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
         android:columnCount="4"
         android:rowCount="4"
-        android:layout_gravity="center"
-        android:useDefaultMargins="true"
-        tools:ignore="UselessParent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck">
 
-        <!-- Define 16 Buttons (4x4 grid) -->
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#FFD600"
-            android:onClick="onGridButtonClick"
-            android:text="B1"
-            tools:ignore="HardcodedText" />
+        <!-- Card 1 -->
+        <FrameLayout
+            android:id="@+id/card1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp">
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#2962FF"
-            android:onClick="onGridButtonClick"
-            android:text="B2"
-            android:textColor="#F1F8E9"
-            tools:ignore="HardcodedText" />
+            <FrameLayout
+                android:id="@+id/front1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#040404">
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#64DD17"
-            android:onClick="onGridButtonClick"
-            android:text="B3"
-            tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Front 1"
+                    android:textAlignment="center"
+                    android:textColor="#A1887F"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#00C853"
-            android:onClick="onGridButtonClick"
-            android:text="B4"
-            tools:ignore="HardcodedText" />
+            <FrameLayout
+                android:id="@+id/back1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00C853"
+                android:visibility="gone">
 
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#F4511E"
-            android:onClick="onGridButtonClick"
-            android:text="B5"
-            tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Back 1"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+        </FrameLayout>
 
-        <Button
-            android:id="@+id/button6"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#6200EA"
-            android:onClick="onGridButtonClick"
-            android:text="B6"
-            android:textColor="#E1BEE7"
-            tools:ignore="HardcodedText" />
+        <!-- Card 2 -->
+        <FrameLayout
+            android:id="@+id/card2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp">
 
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#DD2C00"
-            android:onClick="onGridButtonClick"
-            android:text="B7"
-            android:textColor="#F9FBE7"
-            tools:ignore="HardcodedText" />
+            <FrameLayout
+                android:id="@+id/front2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#040404">
 
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#FFB300"
-            android:onClick="onGridButtonClick"
-            android:text="B8"
-            tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Front 2"
+                    android:textColor="#A1887F"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
 
-        <Button
-            android:id="@+id/button9"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#FFEA00"
-            android:onClick="onGridButtonClick"
-            android:text="B9"
-            tools:ignore="HardcodedText" />
+            <FrameLayout
+                android:id="@+id/back2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00C853"
+                android:visibility="gone">
 
-        <Button
-            android:id="@+id/button10"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#00BFA5"
-            android:onClick="onGridButtonClick"
-            android:text="B10"
-            tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Back 2"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+        </FrameLayout>
 
-        <Button
-            android:id="@+id/button11"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#00B8D4"
-            android:onClick="onGridButtonClick"
-            android:text="B11"
-            tools:ignore="HardcodedText" />
+        <!-- Card 3 -->
+        <FrameLayout
+            android:id="@+id/card3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp">
 
-        <Button
-            android:id="@+id/button12"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#00C853"
-            android:onClick="onGridButtonClick"
-            android:text="B12"
-            tools:ignore="HardcodedText" />
+            <FrameLayout
+                android:id="@+id/front3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#040404">
 
-        <Button
-            android:id="@+id/button13"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#00E676"
-            android:onClick="onGridButtonClick"
-            android:text="B13"
-            tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Front 3"
+                    android:textColor="#A1887F"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
 
-        <Button
-            android:id="@+id/button14"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#1DE9B6"
-            android:onClick="onGridButtonClick"
-            android:text="B14"
-            tools:ignore="HardcodedText" />
+            <FrameLayout
+                android:id="@+id/back3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00C853"
+                android:visibility="gone">
 
-        <Button
-            android:id="@+id/button15"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#651FFF"
-            android:onClick="onGridButtonClick"
-            android:text="B15"
-            android:textColor="#CFD8DC"
-            tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Back 3"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+        </FrameLayout>
 
-        <Button
-            android:id="@+id/button16"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#F50057"
-            android:onClick="onGridButtonClick"
-            android:text="B16"
-            tools:ignore="HardcodedText" />
+        <!-- Card 4 -->
+        <FrameLayout
+            android:id="@+id/card4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp">
+
+            <FrameLayout
+                android:id="@+id/front4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#040404">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Front 4"
+                    android:textColor="#A1887F"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/back4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00C853"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Back 4"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <!-- Card 5 -->
+        <FrameLayout
+            android:id="@+id/card5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp">
+
+            <FrameLayout
+                android:id="@+id/front5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#040404">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Front 5"
+                    android:textColor="#A1887F"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/back5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00C853"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Back 5"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <!-- Card 6 -->
+        <FrameLayout
+            android:id="@+id/card6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp">
+
+            <FrameLayout
+                android:id="@+id/front6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#040404">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Front 6"
+                    android:textColor="#A1887F"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/back6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00C853"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Back 6"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <!-- Card 7 -->
+        <FrameLayout
+            android:id="@+id/card7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp">
+
+            <FrameLayout
+                android:id="@+id/front7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#040404">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Front 7"
+                    android:textColor="#A1887F"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/back7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00C853"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Back 7"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <!-- Card 8 -->
+        <FrameLayout
+            android:id="@+id/card8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp">
+
+            <FrameLayout
+                android:id="@+id/front8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#040404">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Front 8"
+                    android:textColor="#A1887F"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/back8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00C853"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Back 8"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <!-- Card 9 -->
+        <FrameLayout
+            android:id="@+id/card9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp">
+
+            <FrameLayout
+                android:id="@+id/front9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#040404">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Front 9"
+                    android:textColor="#A1887F"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/back9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00C853"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Back 9"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <!-- Card 10 -->
+        <FrameLayout
+            android:id="@+id/card10"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp">
+
+            <FrameLayout
+                android:id="@+id/front10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#040404">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Front 10"
+                    android:textColor="#A1887F"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/back10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00C853"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Back 10"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <!-- Card 11 -->
+        <FrameLayout
+            android:id="@+id/card11"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp">
+
+            <FrameLayout
+                android:id="@+id/front11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#040404">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Front 11"
+                    android:textColor="#A1887F"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/back11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00C853"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Back 11"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <!-- Card 12 -->
+        <FrameLayout
+            android:id="@+id/card12"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp">
+
+            <FrameLayout
+                android:id="@+id/front12"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#040404">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Front 12"
+                    android:textColor="#A1887F"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/back12"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00C853"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Back 12"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <!-- Card 13 -->
+        <FrameLayout
+            android:id="@+id/card13"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp">
+
+            <FrameLayout
+                android:id="@+id/front13"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#040404">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Front 13"
+                    android:textColor="#A1887F"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/back13"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00C853"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Back 13"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <!-- Card 14 -->
+        <FrameLayout
+            android:id="@+id/card14"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp">
+
+            <FrameLayout
+                android:id="@+id/front14"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#040404">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Front 14"
+                    android:textColor="#A1887F"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/back14"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00C853"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Back 14"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <!-- Card 15 -->
+        <FrameLayout
+            android:id="@+id/card15"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp">
+
+            <FrameLayout
+                android:id="@+id/front15"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#040404">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Front 15"
+                    android:textColor="#A1887F"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/back15"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00C853"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Back 15"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <!-- Card 16 -->
+        <FrameLayout
+            android:id="@+id/card16"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp">
+
+            <FrameLayout
+                android:id="@+id/front16"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#040404">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Front 16"
+                    android:textColor="#A1887F"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText,TooManyViews" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/back16"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#040404"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Back 16"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+        </FrameLayout>
 
     </GridLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
