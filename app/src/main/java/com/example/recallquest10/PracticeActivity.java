@@ -1,5 +1,4 @@
 package com.example.recallquest10;
 
-public class test {
+public class PracticeActivity {
 }
-Hello
