@@ -33,16 +33,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#D500F9">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Front 1"
-                    android:textAlignment="center"
-                    android:textColor="#FAFAFA"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
             </FrameLayout>
 
             <FrameLayout
@@ -53,13 +43,12 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/backText1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Back 1"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="24sp"/>
             </FrameLayout>
         </FrameLayout>
 
@@ -77,15 +66,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#040404">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Front 2"
-                    android:textColor="#A1887F"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
             </FrameLayout>
 
             <FrameLayout
@@ -96,13 +76,12 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/backText2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Back 2"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="24sp"/>
             </FrameLayout>
         </FrameLayout>
 
@@ -120,15 +99,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#040404">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Front 3"
-                    android:textColor="#A1887F"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
             </FrameLayout>
 
             <FrameLayout
@@ -139,13 +109,12 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/backText3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Back 3"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="24sp"/>
             </FrameLayout>
         </FrameLayout>
 
@@ -163,15 +132,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#040404">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Front 4"
-                    android:textColor="#A1887F"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
             </FrameLayout>
 
             <FrameLayout
@@ -182,13 +142,12 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/backText4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Back 4"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="24sp"/>
             </FrameLayout>
         </FrameLayout>
 
@@ -206,15 +165,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#040404">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Front 5"
-                    android:textColor="#A1887F"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
             </FrameLayout>
 
             <FrameLayout
@@ -225,13 +175,12 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/backText5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Back 5"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="24sp"/>
             </FrameLayout>
         </FrameLayout>
 
@@ -249,15 +198,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#040404">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Front 6"
-                    android:textColor="#A1887F"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
             </FrameLayout>
 
             <FrameLayout
@@ -268,13 +208,12 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/backText6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Back 6"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="24sp"/>
             </FrameLayout>
         </FrameLayout>
 
@@ -292,15 +231,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#040404">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Front 7"
-                    android:textColor="#A1887F"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
             </FrameLayout>
 
             <FrameLayout
@@ -311,13 +241,12 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/backText7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Back 7"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="24sp"/>
             </FrameLayout>
         </FrameLayout>
 
@@ -335,15 +264,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#040404">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Front 8"
-                    android:textColor="#A1887F"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
             </FrameLayout>
 
             <FrameLayout
@@ -354,13 +274,12 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/backText8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Back 8"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="24sp"/>
             </FrameLayout>
         </FrameLayout>
 
@@ -378,15 +297,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#040404">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Front 9"
-                    android:textColor="#A1887F"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
             </FrameLayout>
 
             <FrameLayout
@@ -397,13 +307,12 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/backText9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Back 9"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="24sp"/>
             </FrameLayout>
         </FrameLayout>
 
@@ -421,15 +330,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#040404">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Front 10"
-                    android:textColor="#A1887F"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
             </FrameLayout>
 
             <FrameLayout
@@ -440,13 +340,12 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/backText10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Back 10"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="24sp"/>
             </FrameLayout>
         </FrameLayout>
 
@@ -465,14 +364,6 @@
                 android:layout_height="match_parent"
                 android:background="#040404">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Front 11"
-                    android:textColor="#A1887F"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
             </FrameLayout>
 
             <FrameLayout
@@ -481,16 +372,14 @@
                 android:layout_height="match_parent"
                 android:background="#00C853"
                 android:visibility="gone">
-
                 <TextView
+                    android:id="@+id/backText11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Back 11"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
-            </FrameLayout>
+                    android:textSize="24sp"/>
+                </FrameLayout>
         </FrameLayout>
 
         <!-- Card 12 -->
@@ -508,14 +397,6 @@
                 android:layout_height="match_parent"
                 android:background="#040404">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Front 12"
-                    android:textColor="#A1887F"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
             </FrameLayout>
 
             <FrameLayout
@@ -526,13 +407,12 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/backText12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Back 12"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="24sp"/>
             </FrameLayout>
         </FrameLayout>
 
@@ -550,15 +430,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#040404">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Front 13"
-                    android:textColor="#A1887F"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
             </FrameLayout>
 
             <FrameLayout
@@ -569,13 +440,12 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/backText13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Back 13"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="24sp"/>
             </FrameLayout>
         </FrameLayout>
 
@@ -593,15 +463,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#040404">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Front 14"
-                    android:textColor="#A1887F"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
             </FrameLayout>
 
             <FrameLayout
@@ -612,13 +473,12 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/backText14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Back 14"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="24sp"/>
             </FrameLayout>
         </FrameLayout>
 
@@ -637,14 +497,6 @@
                 android:layout_height="match_parent"
                 android:background="#040404">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Front 15"
-                    android:textColor="#A1887F"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
             </FrameLayout>
 
             <FrameLayout
@@ -655,13 +507,12 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/backText15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Back 15"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="24sp"/>
             </FrameLayout>
         </FrameLayout>
 
@@ -680,14 +531,6 @@
                 android:layout_height="match_parent"
                 android:background="#040404">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Front 16"
-                    android:textColor="#A1887F"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText,TooManyViews" />
             </FrameLayout>
 
             <FrameLayout
@@ -698,13 +541,12 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/backText16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Back 16"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="24sp"/>
             </FrameLayout>
         </FrameLayout>
 

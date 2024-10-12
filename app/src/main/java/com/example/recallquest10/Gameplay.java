@@ -5,20 +5,30 @@ import android.animation.AnimatorSet;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 public class Gameplay extends AppCompatActivity {
 
     private final FrameLayout[] frontCards = new FrameLayout[16];
     private final FrameLayout[] backCards = new FrameLayout[16];
     private final boolean[] isFrontVisible = new boolean[16];
+    private final int[] randomNumbers = new int[8];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.a4_gameplay);
+        setContentView(R.layout.a4_easy_mode);
 
-        // Initialize all front and back cards directly using their IDs
+        // Initialize random numbers
+        generateRandomNumbers();
+
+        // Initialize all front and back cards
         frontCards[0] = findViewById(R.id.front1);
         backCards[0] = findViewById(R.id.back1);
         frontCards[1] = findViewById(R.id.front2);
@@ -52,14 +62,59 @@ public class Gameplay extends AppCompatActivity {
         frontCards[15] = findViewById(R.id.front16);
         backCards[15] = findViewById(R.id.back16);
 
+        // Assign random numbers to the TextViews in the back cards
+        assignRandomNumbersToBackCards();
+
         // Set click listeners for each card
         for (int i = 0; i < 16; i++) {
             final int index = i; // Create a final variable for use in the listener
-            frontCards[i].setOnClickListener(v -> flipCard(index));
-            backCards[i].setOnClickListener(v -> flipCard(index));
+            for (FrameLayout frameLayout : Arrays.asList(frontCards[i], backCards[i])) {
+                frameLayout.setOnClickListener(v -> flipCard(index));
+            }
             isFrontVisible[i] = true; // Initialize to show the front card
         }
     }
+
+    // Method to generate random numbers
+    private void generateRandomNumbers() {
+        Random random = new Random();
+        Integer[] numbers = new Integer[8];
+
+        for (int i = 0; i < 8; i++) {
+            numbers[i] = random.nextInt(100); // Generate random numbers from 0 to 99
+        }
+
+        List<Integer> shuffledNumbers = Arrays.asList(numbers);
+        Collections.shuffle(shuffledNumbers);
+
+        for (int i = 0; i < 8; i++) {
+            randomNumbers[i] = shuffledNumbers.get(i);
+        }
+    }
+
+    // Method to assign random numbers to back cards
+    private void assignRandomNumbersToBackCards() {
+        Random random = new Random();
+        int[] randomNumbers = new int[8];
+
+        // Generate 8 random numbers
+        for (int i = 0; i < 8; i++) {
+            randomNumbers[i] = random.nextInt(100); // Random number between 0 and 99
+        }
+
+        // Assign the random numbers to backText for first 8 cards
+        for (int i = 0; i < 8; i++) {
+            TextView backCardText = backCards[i].findViewById(R.id.backText1 + i);  // Adjust accordingly
+            backCardText.setText(String.valueOf(randomNumbers[i]));
+        }
+
+        // Assign the same random numbers to remaining cards for matching
+        for (int i = 8; i < 16; i++) {
+            TextView backCardText = backCards[i].findViewById(R.id.backText9 + i); // Adjust accordingly
+            backCardText.setText(String.valueOf(randomNumbers[i - 8]));
+        }
+    }
+
 
     private void flipCard(int index) {
         AnimatorSet frontAnim = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.front_flip);
@@ -82,4 +137,3 @@ public class Gameplay extends AppCompatActivity {
         isFrontVisible[index] = !isFrontVisible[index]; // Toggle visibility state
     }
 }
-
