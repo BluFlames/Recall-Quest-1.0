@@ -28,6 +28,7 @@
         <activity android:name=".MultiplayerActivity" />
         <activity android:name=".StatisticsActivity" />
         <activity android:name=".EasyMode" />
+        <activity android:name=".HostActivity"/>
 
     </application>
 
