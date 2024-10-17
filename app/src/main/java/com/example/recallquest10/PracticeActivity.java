@@ -17,18 +17,18 @@ public class PracticeActivity extends AppCompatActivity {
         Button hardButton = findViewById(R.id.hard_button);
 
         easyButton.setOnClickListener(v -> {
-            Intent intent = new Intent(PracticeActivity.this, Gameplay.class);
-            startActivity(intent); // Navigate to Gameplay
+            Intent intent = new Intent(PracticeActivity.this, EasyMode.class);
+            startActivity(intent); // Navigate to EasyMode
         });
 
         mediumButton.setOnClickListener(v -> {
-            Intent intent = new Intent(PracticeActivity.this, Gameplay.class);
-            startActivity(intent); // Navigate to Gameplay
+            Intent intent = new Intent(PracticeActivity.this, EasyMode.class);
+            startActivity(intent); // Navigate to EasyMode
         });
 
         hardButton.setOnClickListener(v -> {
-            Intent intent = new Intent(PracticeActivity.this, Gameplay.class);
-            startActivity(intent); // Navigate to Gameplay
+            Intent intent = new Intent(PracticeActivity.this, EasyMode.class);
+            startActivity(intent); // Navigate to EasyMode
         });
     }
 }

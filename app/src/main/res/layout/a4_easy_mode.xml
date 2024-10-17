@@ -551,4 +551,17 @@
         </FrameLayout>
 
     </GridLayout>
+
+    <TextClock
+        android:id="@+id/textClock"
+        android:layout_width="178dp"
+        android:layout_height="81dp"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/cardGrid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

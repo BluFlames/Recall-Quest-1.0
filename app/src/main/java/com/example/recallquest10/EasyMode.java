@@ -13,22 +13,30 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class Gameplay extends AppCompatActivity {
+public class EasyMode extends AppCompatActivity {
 
     private final FrameLayout[] frontCards = new FrameLayout[16];
     private final FrameLayout[] backCards = new FrameLayout[16];
     private final boolean[] isFrontVisible = new boolean[16];
-    private final int[] randomNumbers = new int[8];
+    private final int[] randomNumbers = new int[16]; // Expanded to 16 for shuffling
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a4_easy_mode);
 
-        // Initialize random numbers
-        generateRandomNumbers();
-
         // Initialize all front and back cards
+        initializeCards();
+
+        // Generate and assign random numbers to the cards
+        assignRandomNumbersToBackCards();
+
+        // Set click listeners for each card
+        setCardClickListeners();
+    }
+
+    // Initialize all front and back cards
+    private void initializeCards() {
         frontCards[0] = findViewById(R.id.front1);
         backCards[0] = findViewById(R.id.back1);
         frontCards[1] = findViewById(R.id.front2);
@@ -61,11 +69,66 @@ public class Gameplay extends AppCompatActivity {
         backCards[14] = findViewById(R.id.back15);
         frontCards[15] = findViewById(R.id.front16);
         backCards[15] = findViewById(R.id.back16);
+    }
 
-        // Assign random numbers to the TextViews in the back cards
-        assignRandomNumbersToBackCards();
+    // Assign random numbers to the TextViews in the back cards
+    private void assignRandomNumbersToBackCards() {
+        // Generate 8 random numbers
+        generateRandomNumbers();
 
-        // Set click listeners for each card
+        // Get TextViews from back cards
+        TextView[] backTexts = new TextView[16];
+        backTexts[0] = findViewById(R.id.backText1);
+        backTexts[1] = findViewById(R.id.backText2);
+        backTexts[2] = findViewById(R.id.backText3);
+        backTexts[3] = findViewById(R.id.backText4);
+        backTexts[4] = findViewById(R.id.backText5);
+        backTexts[5] = findViewById(R.id.backText6);
+        backTexts[6] = findViewById(R.id.backText7);
+        backTexts[7] = findViewById(R.id.backText8);
+        backTexts[8] = findViewById(R.id.backText9);
+        backTexts[9] = findViewById(R.id.backText10);
+        backTexts[10] = findViewById(R.id.backText11);
+        backTexts[11] = findViewById(R.id.backText12);
+        backTexts[12] = findViewById(R.id.backText13);
+        backTexts[13] = findViewById(R.id.backText14);
+        backTexts[14] = findViewById(R.id.backText15);
+        backTexts[15] = findViewById(R.id.backText16);
+
+        // Assign random numbers to the first 8 cards
+        for (int i = 0; i < 8; i++) {
+            backTexts[i].setText(String.valueOf(randomNumbers[i]));
+        }
+
+        // Assign matching numbers to the next 8 cards
+        for (int i = 8; i < 16; i++) {
+            backTexts[i].setText(String.valueOf(randomNumbers[i - 8]));
+        }
+    }
+
+    // Generate 8 random numbers and shuffle for 16 positions
+    private void generateRandomNumbers() {
+        Random random = new Random();
+        Integer[] numbers = new Integer[8];
+
+        // Generate 8 random numbers
+        for (int i = 0; i < 8; i++) {
+            numbers[i] = random.nextInt(100000); // Random numbers between 0 and 99
+        }
+
+        // Duplicate the numbers for matching
+        for (int i = 0; i < 8; i++) {
+            randomNumbers[i] = numbers[i];
+            randomNumbers[i + 8] = numbers[i]; // Matching number
+        }
+
+        // Shuffle the randomNumbers array to randomize the card positions
+        List<Integer> shuffledNumbers = Arrays.asList(numbers);
+        Collections.shuffle(Collections.singletonList(randomNumbers));
+    }
+
+    // Set click listeners to handle card flips
+    private void setCardClickListeners() {
         for (int i = 0; i < 16; i++) {
             final int index = i; // Create a final variable for use in the listener
             for (FrameLayout frameLayout : Arrays.asList(frontCards[i], backCards[i])) {
@@ -75,47 +138,7 @@ public class Gameplay extends AppCompatActivity {
         }
     }
 
-    // Method to generate random numbers
-    private void generateRandomNumbers() {
-        Random random = new Random();
-        Integer[] numbers = new Integer[8];
-
-        for (int i = 0; i < 8; i++) {
-            numbers[i] = random.nextInt(100); // Generate random numbers from 0 to 99
-        }
-
-        List<Integer> shuffledNumbers = Arrays.asList(numbers);
-        Collections.shuffle(shuffledNumbers);
-
-        for (int i = 0; i < 8; i++) {
-            randomNumbers[i] = shuffledNumbers.get(i);
-        }
-    }
-
-    // Method to assign random numbers to back cards
-    private void assignRandomNumbersToBackCards() {
-        Random random = new Random();
-        int[] randomNumbers = new int[8];
-
-        // Generate 8 random numbers
-        for (int i = 0; i < 8; i++) {
-            randomNumbers[i] = random.nextInt(100); // Random number between 0 and 99
-        }
-
-        // Assign the random numbers to backText for first 8 cards
-        for (int i = 0; i < 8; i++) {
-            TextView backCardText = backCards[i].findViewById(R.id.backText1 + i);  // Adjust accordingly
-            backCardText.setText(String.valueOf(randomNumbers[i]));
-        }
-
-        // Assign the same random numbers to remaining cards for matching
-        for (int i = 8; i < 16; i++) {
-            TextView backCardText = backCards[i].findViewById(R.id.backText9 + i); // Adjust accordingly
-            backCardText.setText(String.valueOf(randomNumbers[i - 8]));
-        }
-    }
-
-
+    // Flip card logic
     private void flipCard(int index) {
         AnimatorSet frontAnim = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.front_flip);
         AnimatorSet backAnim = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.back_flip);

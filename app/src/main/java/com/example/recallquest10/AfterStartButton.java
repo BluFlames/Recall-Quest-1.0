@@ -12,6 +12,9 @@ public class AfterStartButton extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a2_after_login_buttons); // This links to your XML layout file containing the buttons
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         // Find the buttons in the layout by their IDs
         Button practiceButton = findViewById(R.id.practice_button);
         Button multiplayerButton = findViewById(R.id.multiplayer_button);

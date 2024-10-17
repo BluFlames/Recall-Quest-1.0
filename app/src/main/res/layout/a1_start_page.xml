@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    tools:ignore="MissingClass">
+    tools:context=".MainActivity">
 
     <EditText
         android:id="@+id/editTextTextMultiLine"
@@ -36,7 +35,7 @@
         android:layout_width="250dp"
         android:layout_height="100dp"
         android:background="@drawable/rounded_button"
-        android:text="Start"
+        android:text="@string/start"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#FBC02D"
@@ -44,6 +43,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
-        tools:ignore="HardcodedText,TextSizeCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
 </androidx.constraintlayout.widget.ConstraintLayout>
