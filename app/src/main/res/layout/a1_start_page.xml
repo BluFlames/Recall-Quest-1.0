@@ -6,42 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editTextTextMultiLine"
-        android:layout_width="358dp"
-        android:layout_height="332dp"
-        android:background="@null"
-        android:clickable="false"
-        android:fontFamily="monospace"
-        android:gravity="center_horizontal"
-        android:inputType="none"
-        android:keepScreenOn="true"
-        android:lineSpacingExtra="8sp"
-        android:text="Welcome to Recall Quest : The Ultimate Game"
+    <Button
+        android:id="@+id/start_button"
+        style="@android:style/Widget.DeviceDefault.Button"
+        android:layout_width="307dp"
+        android:layout_height="124dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/ar_one_sans_bold"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/start"
         android:textAlignment="center"
-        android:textColor="#0D0D0D"
-        android:textSize="48sp"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.119"
-        tools:ignore="Autofill,HardcodedText,LabelFor,TextSizeCheck" />
+        app:layout_constraintVertical_bias="0.75" />
 
-    <Button
-        android:id="@+id/start_button"
-        style="@android:style/Widget.DeviceDefault.Button"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
-        android:background="@drawable/rounded_button"
-        android:text="@string/start"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/get_ready_for_the_ultimate_quest"
+        android:ellipsize="end"
+        android:focusable="true"
+        android:fontFamily="@font/ar_one_sans_bold"
+        android:importantForAccessibility="yes"
+        android:maxLines="3"
+        android:minWidth="200dp"
+        android:minHeight="50dp"
+        android:text="@string/get_ready_for_the_ultimate_quest"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#FBC02D"
-        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25"
+        tools:text="Get Ready for the Ultimate Quest!" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

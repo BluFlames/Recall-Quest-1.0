@@ -6,22 +6,49 @@
     android:layout_height="match_parent"
     >
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/choose_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/too_easy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/warrior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/impossible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
     <TextView
         android:id="@+id/textView"
-        android:layout_width="261dp"
-        android:layout_height="57dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
-        android:text="Choose Level"
+        android:importantForAccessibility="yes"
+        android:maxLines="1"
+        android:minWidth="200dp"
+        android:minHeight="50dp"
+        android:text="@string/choose_level"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/choose_level"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102"
-        tools:ignore="HardcodedText,TextSizeCheck" />
+        tools:text="Choose Level" />
 
     <Button
         android:id="@+id/easy_button"
@@ -31,12 +58,10 @@
         android:text="@string/too_easy"
         android:textAllCaps="false"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.100000024" />
+        app:layout_constraintBottom_toBottomOf="@+id/too_easy"
+        />
 
     <Button
         android:id="@+id/medium_button"
@@ -46,12 +71,9 @@
         android:text="@string/warrior"
         android:textAllCaps="false"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/warrior"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/easy_button"
-        app:layout_constraintVertical_bias="0.20999998" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/hard_button"
@@ -62,10 +84,7 @@
         android:text="@string/impossible"
         android:textColor="#FFFFFF"
         android:textSize="29sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/impossible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/medium_button"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

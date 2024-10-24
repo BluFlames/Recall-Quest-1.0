@@ -1,67 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- First guideline for equal spacing -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <!-- Second guideline for equal spacing -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_middle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <!-- Third guideline for equal spacing -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <!-- Practice Button -->
     <Button
         android:id="@+id/practice_button"
         android:layout_width="250dp"
         android:layout_height="100dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="sans-serif-condensed-light"
-        android:text="Practice"
+        android:text="@string/practice"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#00E5FF"
+        android:textAllCaps="false"
+        android:textColor="#000000"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline_top" />
 
+    <!-- Multiplayer Button -->
     <Button
         android:id="@+id/multiplayer_button"
         android:layout_width="250dp"
         android:layout_height="100dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="sans-serif-condensed-light"
-        android:text="Multiplayer"
+        android:text="@string/multiplayer"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#D500F9"
+        android:textAllCaps="false"
+        android:textColor="#000000"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/practice_button"
-        app:layout_constraintVertical_bias="0.2"
-        tools:ignore="HardcodedText,TextSizeCheck" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline_middle" />
 
+    <!-- Stats Button -->
     <Button
         android:id="@+id/stats_button"
         android:layout_width="250dp"
         android:layout_height="100dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="sans-serif-condensed-light"
-        android:text="Statistics"
+        android:text="@string/stats"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#FFD600"
+        android:textAllCaps="false"
+        android:textColor="#000000"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/multiplayer_button"
-        app:layout_constraintVertical_bias="0.41"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline_bottom" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

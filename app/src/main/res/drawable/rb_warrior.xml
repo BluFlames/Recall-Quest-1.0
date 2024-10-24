@@ -1,4 +1,4 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#0876BC"/> <!-- Button color -->
+    <solid android:color="#0D99ED"/> <!-- Button color -->
     <corners android:radius="55dp"/> <!-- Corner radius for rounding -->
 </shape>

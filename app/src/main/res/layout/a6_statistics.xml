@@ -5,30 +5,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="112dp"
-        android:layout_height="107dp"
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="210dp"
+        android:layout_height="149dp"
+        android:contentDescription="@string/app_name"
+        android:clickable ="false"
+        android:src="@mipmap/ic_launcher_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.797" />
 
-    <EditText
-        android:id="@+id/editTextTime"
+    <SeekBar
+        android:id="@+id/seekBar"
         android:layout_width="247dp"
-        android:layout_height="115dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:inputType="time"
-        android:labelFor="@id/progressBar"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        android:hint="@string/time"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        android:layout_height="84dp"
+        android:progressTint="#3700FF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Wait" />
+        app:layout_constraintVertical_bias="0.56" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="185dp"
+        android:layout_height="111dp"
+        android:indeterminateTint="#213AFB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.396" />
+
+    <TextClock
+        android:id="@+id/textClock2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ar_one_sans_bold"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.441"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.174"
+        tools:text="@string/impossible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

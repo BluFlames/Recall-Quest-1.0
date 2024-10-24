@@ -7,10 +7,13 @@
     <string name="stats">Stats</string>
     <string name="host_button_text">Host</string>
     <string name="join_button_text">Join</string>
-    <string name="start">Start</string>
+    <string name="start">Begin Quest</string>
     <string name="just_an_image">Just an Image</string>
     <string name="too_easy">Too Easy</string>
     <string name="impossible">Impossible</string>
     <string name="warrior">Warrior</string>
     <string name="time">Time</string>
+    <string name="get_ready_for_the_ultimate_quest">Get Ready for the Ultimate Quest!</string>
+    <string name="choose_level">Choose Level</string>
+
 </resources>
