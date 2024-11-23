@@ -13,7 +13,11 @@
     <string name="impossible">Impossible</string>
     <string name="warrior">Warrior</string>
     <string name="time">Time</string>
+    <string name="easy_mode">You are in Easy Mode</string>
+    <string name="medium_mode">This is NOT Easy Mode</string>
+    <string name="difficult_mode">You can\'t finish this one</string>
     <string name="get_ready_for_the_ultimate_quest">Get Ready for the Ultimate Quest!</string>
     <string name="choose_level">Choose Level</string>
+    <string name="time_30">Time : 30</string>
 
 </resources>

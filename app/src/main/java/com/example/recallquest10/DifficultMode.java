@@ -12,18 +12,16 @@ import android.os.CountDownTimer;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
-public class EasyMode extends AppCompatActivity {
+public class DifficultMode extends AppCompatActivity {
 
     private final FrameLayout[] frontCards = new FrameLayout[16];
     private final FrameLayout[] backCards = new FrameLayout[16];
     private final boolean[] isFrontVisible = new boolean[16];
     private final boolean[] isMatched = new boolean[16]; // Track matched cards
-    private final int[] randomNumbers = new int[16]; // Expanded to 16 for shuffling
+    private final String[] randomNumbers = new String[16]; // Expanded to 16 for shuffling
     private final List<Integer> flippedCards = new ArrayList<>(); // Track flipped cards
     private CountDownTimer countDownTimer; // Timer variable
     private TextView timerText; // TextView for displaying timer
@@ -31,9 +29,9 @@ public class EasyMode extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.a4_easy_mode);
+        setContentView(R.layout.a6_difficult_mode);
 
-        timerText = findViewById(R.id.timerText); // Link timer TextView
+        timerText = findViewById(R.id.timerText3); // Link timer TextView
 
         // Start 30-second timer
         startTimer();
@@ -83,10 +81,39 @@ public class EasyMode extends AppCompatActivity {
         backCards[15] = findViewById(R.id.back16);
     }
 
+    // Define special character combinations in an array
+    private final String[] specialCharacterCombinations = {
+            "%#&@^!?|",
+            "!{%%$}?@",
+            "^@#*!{|$",
+            "@|}&%!?^",
+            "$!}|@%^{",
+            "?&$#*!}|",
+            "|!{?^%@&",
+            "#&*?|$%^"
+    };
+
+    // Generate and shuffle special character pairs for the cards
+    private void generateRandomCombinations() {
+        // Duplicate the array to create pairs
+        List<String> combinations = new ArrayList<>();
+        for (String combo : specialCharacterCombinations) {
+            combinations.add(combo);
+            combinations.add(combo); // Add each combination twice for matching pairs
+        }
+
+        // Shuffle the list to randomize the card positions
+        Collections.shuffle(combinations);
+
+        // Assign shuffled values to the back of each card
+        for (int i = 0; i < 16; i++) {
+            randomNumbers[i] = combinations.get(i); // Store combination in the randomNumbers array
+        }
+    }
     // Assign random numbers to the TextViews in the back cards
     private void assignRandomNumbersToBackCards() {
         // Generate and shuffle random numbers
-        generateRandomNumbers();
+        generateRandomCombinations();
 
         // Get TextViews from back cards
         TextView[] backTexts = new TextView[16];
@@ -113,30 +140,6 @@ public class EasyMode extends AppCompatActivity {
         }
     }
 
-    // Generate 8 random numbers and shuffle for 16 positions
-    private void generateRandomNumbers() {
-        Random random = new Random();
-        Integer[] numbers = new Integer[8];
-
-        // Generate 8 random numbers
-        for (int i = 0; i < 8; i++) {
-            numbers[i] = random.nextInt(100); // Random numbers between 0 and 99999
-        }
-
-        // Duplicate the numbers for matching
-        for (int i = 0; i < 8; i++) {
-            randomNumbers[i] = numbers[i];
-            randomNumbers[i + 8] = numbers[i]; // Matching number
-        }
-
-        // Shuffle the randomNumbers array to randomize the card positions
-        List<Integer> numberList = Arrays.asList(Arrays.stream(randomNumbers).boxed().toArray(Integer[]::new));
-        Collections.shuffle(numberList);
-        for (int i = 0; i < numberList.size(); i++) {
-            randomNumbers[i] = numberList.get(i);
-        }
-    }
-
     // Set click listeners to handle card flips
     private void setCardClickListeners() {
         for (int i = 0; i < 16; i++) {
@@ -147,7 +150,6 @@ public class EasyMode extends AppCompatActivity {
         }
     }
 
-    // Flip card logic
     // Flip card logic
     private void flipCard(int index) {
         // Check if the card is already matched to avoid flipping it again
@@ -206,7 +208,7 @@ public class EasyMode extends AppCompatActivity {
 
     // End game logic (timer expired)
     private void endGame() {
-        Toast.makeText(EasyMode.this, "Time's up! Game Over.", Toast.LENGTH_LONG).show();
+        Toast.makeText(DifficultMode.this, "Time's up! Game Over.", Toast.LENGTH_LONG).show();
         // Optionally, navigate to a result screen or reset the game
         finish(); // Close the activity or reset the game
     }
@@ -223,7 +225,7 @@ public class EasyMode extends AppCompatActivity {
         int card1 = flippedCards.get(0);
         int card2 = flippedCards.get(1);
 
-        if (randomNumbers[card1] == randomNumbers[card2]) {
+        if (randomNumbers[card1].equals(randomNumbers[card2])) {
             // Lock matched cards
             isMatched[card1] = true;
             isMatched[card2] = true;
@@ -234,7 +236,7 @@ public class EasyMode extends AppCompatActivity {
             // Check if all cards are matched
             if (allCardsMatched()) {
                 stopTimer(); // Stop the timer as the game is completed
-                Toast.makeText(EasyMode.this, "Congratulations! You've completed the game!", Toast.LENGTH_LONG).show();
+                Toast.makeText(DifficultMode.this, "Congratulations! You've completed the game!", Toast.LENGTH_LONG).show();
             }
         } else {
             // Flip back the cards after a short delay

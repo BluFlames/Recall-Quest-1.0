@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/timerText"
+        android:id="@+id/timerText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -397,7 +397,7 @@
                     android:layout_gravity="center"
                     android:textColor="@android:color/white"
                     android:textSize="24sp"/>
-                </FrameLayout>
+            </FrameLayout>
         </FrameLayout>
 
         <!-- Card 12 -->
@@ -576,7 +576,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
         android:importantForAccessibility="yes"
-        android:text="@string/easy_mode"
+        android:text="@string/medium_mode"
         android:textAlignment="center"
         android:textColor="#120101"
         android:textSize="29sp"

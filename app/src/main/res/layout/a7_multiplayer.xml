@@ -17,8 +17,8 @@
 
     <Button
         android:id="@+id/host_button"
-        android:layout_width="206dp"
-        android:layout_height="104dp"
+        android:layout_width="283dp"
+        android:layout_height="150dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="sans-serif-medium"
         android:text="@string/host_button_text"
@@ -34,8 +34,8 @@
 
     <Button
         android:id="@+id/join_button"
-        android:layout_width="219dp"
-        android:layout_height="109dp"
+        android:layout_width="295dp"
+        android:layout_height="136dp"
         android:background="@drawable/rounded_button2"
         android:text="@string/join_button_text"
         android:textAlignment="center"

@@ -11,7 +11,7 @@ public class MultiplayerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.a5_multiplayer);
+        setContentView(R.layout.a7_multiplayer);
 
         Button hostButton = findViewById(R.id.host_button);
         Button joinButton = findViewById(R.id.join_button);

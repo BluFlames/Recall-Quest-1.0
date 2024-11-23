@@ -22,13 +22,13 @@ public class PracticeActivity extends AppCompatActivity {
         });
 
         mediumButton.setOnClickListener(v -> {
-            Intent intent = new Intent(PracticeActivity.this, EasyMode.class);
-            startActivity(intent); // Navigate to EasyMode
+            Intent i = new Intent(PracticeActivity.this, MediumMode.class);
+            startActivity(i); // Navigate to MediumMode
         });
 
         hardButton.setOnClickListener(v -> {
-            Intent intent = new Intent(PracticeActivity.this, EasyMode.class);
-            startActivity(intent); // Navigate to EasyMode
+            Intent in = new Intent(PracticeActivity.this, DifficultMode.class);
+            startActivity(in); // Navigate to DifficultMode
         });
     }
 }
