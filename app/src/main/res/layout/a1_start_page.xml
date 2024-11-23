@@ -9,8 +9,8 @@
     <Button
         android:id="@+id/start_button"
         style="@android:style/Widget.DeviceDefault.Button"
-        android:layout_width="307dp"
-        android:layout_height="124dp"
+        android:layout_width="252dp"
+        android:layout_height="102dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/ar_one_sans_bold"
         android:gravity="center_horizontal|center_vertical"
@@ -28,8 +28,8 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="372dp"
+        android:layout_height="224dp"
         android:contentDescription="@string/get_ready_for_the_ultimate_quest"
         android:ellipsize="end"
         android:focusable="true"

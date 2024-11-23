@@ -7,8 +7,8 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="210dp"
-        android:layout_height="149dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:contentDescription="@string/app_name"
         android:clickable ="false"
         android:src="@mipmap/ic_launcher_foreground"
@@ -20,8 +20,8 @@
 
     <SeekBar
         android:id="@+id/seekBar"
-        android:layout_width="247dp"
-        android:layout_height="84dp"
+        android:layout_width="250dp"
+        android:layout_height="63dp"
         android:progressTint="#3700FF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,8 +32,8 @@
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
-        android:layout_width="185dp"
-        android:layout_height="111dp"
+        android:layout_width="171dp"
+        android:layout_height="146dp"
         android:indeterminateTint="#213AFB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,10 +51,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.441"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.174"
+        app:layout_constraintVertical_bias="0.172"
         tools:text="@string/impossible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
