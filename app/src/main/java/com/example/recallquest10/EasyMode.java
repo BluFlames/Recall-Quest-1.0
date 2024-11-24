@@ -17,6 +17,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class EasyMode extends AppCompatActivity {
 
     private final FrameLayout[] frontCards = new FrameLayout[16];
@@ -27,11 +34,17 @@ public class EasyMode extends AppCompatActivity {
     private final List<Integer> flippedCards = new ArrayList<>(); // Track flipped cards
     private CountDownTimer countDownTimer; // Timer variable
     private TextView timerText; // TextView for displaying timer
+    private GameDatabaseHelper dbHelper; // To store data in SQLite
+    private long currentSessionId; // To track the current game session ID
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a4_easy_mode);
+
+        dbHelper = new GameDatabaseHelper(this);
+
+        startNewGameSession();
 
         timerText = findViewById(R.id.timerText); // Link timer TextView
 
@@ -148,7 +161,6 @@ public class EasyMode extends AppCompatActivity {
     }
 
     // Flip card logic
-    // Flip card logic
     private void flipCard(int index) {
         // Check if the card is already matched to avoid flipping it again
         if (isMatched[index] || flippedCards.contains(index)) {
@@ -184,11 +196,12 @@ public class EasyMode extends AppCompatActivity {
         if (flippedCards.size() == 2) {
             checkForMatch();
         }
+        recordCardFlip(index);
     }
 
     // Start 30-second countdown timer
     private void startTimer() {
-        countDownTimer = new CountDownTimer(30000, 1000) { // 30 seconds with 1-second intervals
+        countDownTimer = new CountDownTimer(100000, 1000) { // 30 seconds with 1-second intervals
 
             @SuppressLint("SetTextI18n")
             @Override
@@ -272,5 +285,36 @@ public class EasyMode extends AppCompatActivity {
         frontAnim.start();
         backAnim.start();
         isFrontVisible[index] = true; // Set to front visibility
+    }
+
+    private void startNewGameSession() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(GameDatabaseHelper.COLUMN_MODE, "Easy");
+        values.put(GameDatabaseHelper.COLUMN_DATE, new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()));
+        values.put(GameDatabaseHelper.COLUMN_TIME, new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date()));
+        currentSessionId = db.insert(GameDatabaseHelper.TABLE_NAME, null, values); // Store the session ID
+        db.close();
+    }
+
+
+    private void recordCardFlip(int cardNumber) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        // Ensure the card index is valid and matches the database schema
+        if (cardNumber < 0 || cardNumber >= GameDatabaseHelper.CLICK_COLUMNS.length) {
+            throw new IllegalArgumentException("Invalid card number: " + cardNumber);
+        }
+
+        // Get the column corresponding to the card's flip count
+        String column = GameDatabaseHelper.CLICK_COLUMNS[cardNumber];
+
+        // Update the flip count for the current session
+        String query = "UPDATE " + GameDatabaseHelper.TABLE_NAME +
+                " SET " + column + " = " + column + " + 1 WHERE " +
+                GameDatabaseHelper.COLUMN_SESSION_ID + " = ?";
+        db.execSQL(query, new String[]{String.valueOf(currentSessionId)});
+
+        db.close(); // Close the database connection
     }
 }
