@@ -2,6 +2,7 @@ package com.example.recallquest10;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Start button's click event
         startButton.setOnClickListener(v -> {
+            v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_scale));
             // Intent to navigate to AfterStartButton
             Intent intent = new Intent(MainActivity.this, AfterStartButton.class);
             startActivity(intent); // Start AfterStartButton when the Start button is pressed

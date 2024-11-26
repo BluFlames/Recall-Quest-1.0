@@ -19,7 +19,7 @@
     <string name="get_ready_for_the_ultimate_quest">Get Ready for the Ultimate Quest!</string>
     <string name="choose_level">Choose Level</string>
     <string name="time_30">Time : 30</string>
-    <string name="export_easy_mode_data">Export Easy Mode Data</string>
-    <string name="export_medium_mode_data">Export Medium Mode Data</string>
+    <string name="export_easy_mode_data">Easy Mode Data</string>
+    <string name="export_medium_mode_data">Medium Mode Data</string>
 
 </resources>

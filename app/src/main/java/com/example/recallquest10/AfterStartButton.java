@@ -2,6 +2,7 @@ package com.example.recallquest10;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,18 +25,21 @@ public class AfterStartButton extends AppCompatActivity {
 
         // Practice button's click event
         practiceButton.setOnClickListener(v -> {
+            v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_scale));
             Intent intent = new Intent(AfterStartButton.this, PracticeActivity.class);
             startActivity(intent); // Navigate to PracticeActivity
         });
 
         // Multiplayer button's click event
         multiplayerButton.setOnClickListener(v -> {
+            v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_scale));
             Intent intent = new Intent(AfterStartButton.this, MultiplayerActivity.class);
             startActivity(intent); // Navigate to MultiplayerActivity
         });
 
         // Statistics button's click event
         statsButton.setOnClickListener(v -> {
+            v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_scale));
             Intent intent = new Intent(AfterStartButton.this, StatisticsActivity.class);
             startActivity(intent); // Navigate to StatisticsActivity
         });
