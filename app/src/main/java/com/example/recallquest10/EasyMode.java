@@ -34,7 +34,7 @@ public class EasyMode extends AppCompatActivity {
     private final List<Integer> flippedCards = new ArrayList<>(); // Track flipped cards
     private CountDownTimer countDownTimer; // Timer variable
     private TextView timerText; // TextView for displaying timer
-    private GameDatabaseHelper dbHelper; // To store data in SQLite
+    private GameDatabaseEasy dbHelper; // To store data in SQLite
     private String currentTableName; // To store the table name for the current game session
 
 
@@ -43,7 +43,7 @@ public class EasyMode extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a4_easy_mode);
 
-        dbHelper = new GameDatabaseHelper(this);
+        dbHelper = new GameDatabaseEasy(this);
 
         // Start the game session only once when the activity is created
         if (savedInstanceState == null) { // Check to prevent re-creation on rotation
@@ -209,7 +209,7 @@ public class EasyMode extends AppCompatActivity {
 
     // Start 30-second countdown timer
     private void startTimer() {
-        countDownTimer = new CountDownTimer(100000, 1000) { // 30 seconds with 1-second intervals
+        countDownTimer = new CountDownTimer(60000, 1000) { // 30 seconds with 1-second intervals
 
             @SuppressLint("SetTextI18n")
             @Override

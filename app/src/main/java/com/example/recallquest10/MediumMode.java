@@ -17,6 +17,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class MediumMode extends AppCompatActivity {
 
     private final FrameLayout[] frontCards = new FrameLayout[16];
@@ -27,13 +34,23 @@ public class MediumMode extends AppCompatActivity {
     private final List<Integer> flippedCards = new ArrayList<>(); // Track flipped cards
     private CountDownTimer countDownTimer; // Timer variable
     private TextView timerText; // TextView for displaying timer
+    private GameDatabaseMedium dbHelper; // To store data in SQLite
+    private String currentTableName; // To store the table name for the current game session
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.a5_medium_mode);
+        setContentView(R.layout.a4_easy_mode);
 
-        timerText = findViewById(R.id.timerText2); // Link timer TextView
+        dbHelper = new GameDatabaseMedium(this);
+
+        // Start the game session only once when the activity is created
+        if (savedInstanceState == null) { // Check to prevent re-creation on rotation
+            startNewGameSession();
+        }
+
+        timerText = findViewById(R.id.timerText); // Link timer TextView
 
         // Start 30-second timer
         startTimer();
@@ -111,6 +128,10 @@ public class MediumMode extends AppCompatActivity {
         for (int i = 0; i < 16; i++) {
             backTexts[i].setText(String.valueOf(randomNumbers[i]));
         }
+
+        // Insert card values into the new session's table
+        insertCardValues();
+
     }
 
     // Generate 8 random numbers and shuffle for 16 positions
@@ -148,7 +169,6 @@ public class MediumMode extends AppCompatActivity {
     }
 
     // Flip card logic
-    // Flip card logic
     private void flipCard(int index) {
         // Check if the card is already matched to avoid flipping it again
         if (isMatched[index] || flippedCards.contains(index)) {
@@ -184,6 +204,7 @@ public class MediumMode extends AppCompatActivity {
         if (flippedCards.size() == 2) {
             checkForMatch();
         }
+        recordCardFlip(index);
     }
 
     // Start 30-second countdown timer
@@ -273,4 +294,51 @@ public class MediumMode extends AppCompatActivity {
         backAnim.start();
         isFrontVisible[index] = true; // Set to front visibility
     }
+
+    // Start a new game session and create a unique table with only "card_value" and "click_count" columns
+    private void startNewGameSession() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        // Generate a unique table name in the format "E_[Date]_[Time]"
+        String date = new SimpleDateFormat("yyyy_MM_dd", Locale.getDefault()).format(new Date());
+        String time = new SimpleDateFormat("HH_mm_ss", Locale.getDefault()).format(new Date());
+        currentTableName = "M_" + date + "_" + time;
+
+        // Create the new session table with "card_value" and "click_count" columns
+        dbHelper.createGameSessionTable(currentTableName, db);
+
+        // Populate the new table with initial values for each card
+
+
+        db.close();
+    }
+
+
+    // Insert each card value with an initial click count of 0
+    private void insertCardValues() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        // Loop through each card value and insert it into the current session's table
+        for (int value : randomNumbers) {
+            ContentValues values = new ContentValues();
+            values.put("card_value", value);
+            values.put("click_count", 0); // Start click count at 0 for each card
+            db.insert(currentTableName, null, values);
+        }
+
+        db.close();
+    }
+
+    // Update the "click_count" for a card each time it is flipped
+    private void recordCardFlip(int cardNumber) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        // Update click_count in the current session's table for the specified card_value
+        String query = "UPDATE " + currentTableName +
+                " SET click_count = click_count + 1 WHERE card_value = ?";
+        db.execSQL(query, new String[]{String.valueOf(randomNumbers[cardNumber])});
+
+        db.close();
+    }
+
 }

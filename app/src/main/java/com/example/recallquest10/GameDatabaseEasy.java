@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class GameDatabaseHelper extends SQLiteOpenHelper {
+public class GameDatabaseEasy extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "EasyMode.db";
     private static final int DATABASE_VERSION = 2; // Incremented for new changes
@@ -12,7 +12,7 @@ public class GameDatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "game_sessions";
 
 
-    public GameDatabaseHelper(Context context) {
+    public GameDatabaseEasy(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
