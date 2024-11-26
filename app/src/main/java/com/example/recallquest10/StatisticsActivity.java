@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
@@ -30,8 +31,13 @@ import java.util.List;
 public class StatisticsActivity extends AppCompatActivity {
 
     private GameDatabaseEasy dbEasy;
+    private GameDatabaseMedium dbMedium;
     private static final int STORAGE_PERMISSION_CODE = 100;
     private static final String TAG = "StatisticsActivity";
+
+    private static final String MAIN_FOLDER_NAME = "RecallQuestExports";
+    private static final String EASY_MODE_FOLDER_NAME = "EasyModeExports";
+    private static final String MEDIUM_MODE_FOLDER_NAME = "MediumModeExports";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +45,21 @@ public class StatisticsActivity extends AppCompatActivity {
         setContentView(R.layout.a8_statistics);
 
         dbEasy = new GameDatabaseEasy(this);
+        dbMedium = new GameDatabaseMedium(this);
 
         // Button to export Easy Mode database
         Button exportEasyModeButton = findViewById(R.id.export_easy_mode_button);
         exportEasyModeButton.setOnClickListener(v -> {
             if (checkStoragePermission()) {
-                exportLatestTables(dbEasy.getReadableDatabase()); // Export latest 5 tables
+                exportLatestTables(dbEasy.getReadableDatabase(), EASY_MODE_FOLDER_NAME, "EasyMode");
+            }
+        });
+
+        // Button to export Medium Mode database
+        Button exportMediumModeButton = findViewById(R.id.export_medium_mode_button);
+        exportMediumModeButton.setOnClickListener(v -> {
+            if (checkStoragePermission()) {
+                exportLatestTables(dbMedium.getReadableDatabase(), MEDIUM_MODE_FOLDER_NAME, "MediumMode");
             }
         });
     }
@@ -52,8 +67,7 @@ public class StatisticsActivity extends AppCompatActivity {
     // Check and request storage permission
     private boolean checkStoragePermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            // Android 10+ doesn't need WRITE_EXTERNAL_STORAGE for MediaStore, so we return true
-            return true;
+            return true;  // Android 10+ doesn't require WRITE_EXTERNAL_STORAGE for Downloads
         } else if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
             return true;
         } else {
@@ -62,17 +76,13 @@ public class StatisticsActivity extends AppCompatActivity {
         }
     }
 
-    private void exportLatestTables(SQLiteDatabase db) {
+    private void exportLatestTables(SQLiteDatabase db, String subfolderName, String mode) {
         List<String> tableNames = getAllTableNames(db);
-
-        // Sort by table name (assumes tables have date/time suffix)
-        tableNames.sort(Comparator.reverseOrder()); // Latest first
-
-        // Get the latest `limit` tables
+        tableNames.sort(Comparator.reverseOrder()); // Sort to get latest tables first
         List<String> latestTables = tableNames.subList(0, Math.min(5, tableNames.size()));
 
         for (String tableName : latestTables) {
-            exportTableToCSV(db, tableName);
+            exportTableToCSV(db, tableName, subfolderName, mode);
         }
     }
 
@@ -90,48 +100,68 @@ public class StatisticsActivity extends AppCompatActivity {
         return tableNames;
     }
 
-    // Export database table to CSV in Downloads folder
-    private void exportTableToCSV(SQLiteDatabase db, String tableName) {
-        String fileName = tableName + "_Export_" + System.currentTimeMillis() + ".txt";
-        Uri fileUri;
+    private void exportTableToCSV(SQLiteDatabase db, String tableName, String subfolderName, String mode) {
+        String fileName = mode + "_" + tableName + "_Export_" + System.currentTimeMillis() + ".csv";
 
-        // Use MediaStore API for Android 10 and above to save in Downloads
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            ContentValues contentValues = new ContentValues();
-            contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, fileName);
-            contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "text/csv");
-            contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
-
-            fileUri = getContentResolver().insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValues);
-
-            if (fileUri == null) {
-                Toast.makeText(this, "Error creating file in Downloads.", Toast.LENGTH_LONG).show();
-                return;
-            }
-
-            try (OutputStream outputStream = getContentResolver().openOutputStream(fileUri);
-                 Writer writer = new OutputStreamWriter(outputStream)) {
-                writeCsvDataToOutputStream(db, tableName, writer);
-                Toast.makeText(this, "Exported " + tableName + " to Downloads.", Toast.LENGTH_SHORT).show();
-            } catch (IOException e) {
-                Toast.makeText(this, "Error exporting: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                Log.e(TAG, "Error exporting " + tableName, e);
-            }
-
+            saveFileToDownloadsFolder(db, tableName, subfolderName, fileName);
         } else {
-            // For Android 9 and below, use external storage directly
-            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
-            try (FileWriter fileWriter = new FileWriter(file)) {
-                writeCsvDataToOutputStream(db, tableName, fileWriter);
-                Toast.makeText(this, "Exported " + tableName + " to Downloads.", Toast.LENGTH_SHORT).show();
-            } catch (IOException e) {
-                Toast.makeText(this, "Error exporting: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                Log.e(TAG, "Error exporting " + tableName, e);
-            }
+            saveFileToLegacyExternalStorage(db, tableName, subfolderName, fileName);
         }
     }
 
-    // Helper method to write data to output stream
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    private void saveFileToDownloadsFolder(SQLiteDatabase db, String tableName, String subfolderName, String fileName) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, fileName);
+        contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "text/csv");
+        contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS + "/" + MAIN_FOLDER_NAME + "/" + subfolderName);
+
+        Uri fileUri = getContentResolver().insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValues);
+
+        if (fileUri == null) {
+            Toast.makeText(this, "Error creating file in Downloads.", Toast.LENGTH_LONG).show();
+            Log.e(TAG, "File URI is null; unable to create file.");
+            return;
+        }
+
+        try (OutputStream outputStream = getContentResolver().openOutputStream(fileUri);
+             Writer writer = new OutputStreamWriter(outputStream)) {
+            writeCsvDataToOutputStream(db, tableName, writer);
+            Toast.makeText(this, "Exported " + tableName + " to Downloads/" + MAIN_FOLDER_NAME + "/" + subfolderName, Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            Toast.makeText(this, "Error exporting: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            Log.e(TAG, "Error exporting " + tableName, e);
+        }
+    }
+
+    private void saveFileToLegacyExternalStorage(SQLiteDatabase db, String tableName, String subfolderName, String fileName) {
+        File mainFolder = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), MAIN_FOLDER_NAME);
+        File subFolder = new File(mainFolder, subfolderName);
+
+        // Create main and subfolders if they don’t exist
+        if (!subFolder.exists()) {
+            if (subFolder.mkdirs()) {
+                Log.d(TAG, "Created folder: " + subFolder.getAbsolutePath());
+            } else {
+                Log.e(TAG, "Failed to create folder: " + subFolder.getAbsolutePath());
+                Toast.makeText(this, "Error creating folder.", Toast.LENGTH_LONG).show();
+                return;
+            }
+        }
+
+        File file = new File(subFolder, fileName);
+
+        try (FileWriter fileWriter = new FileWriter(file)) {
+            writeCsvDataToOutputStream(db, tableName, fileWriter);
+            Toast.makeText(this, "Exported " + tableName + " to " + subFolder.getAbsolutePath(), Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            Toast.makeText(this, "Error exporting: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            Log.e(TAG, "Error exporting " + tableName, e);
+        }
+    }
+
+    // Helper method to write data to output stream in CSV format
     private void writeCsvDataToOutputStream(SQLiteDatabase db, String tableName, Writer writer) throws IOException {
         Cursor cursor = db.rawQuery("SELECT * FROM " + tableName, null);
         Log.d(TAG, "Writing data for table: " + tableName);
@@ -147,20 +177,19 @@ public class StatisticsActivity extends AppCompatActivity {
             return;
         }
 
-        // Write header row
-        writer.append("Card Value, Click Count\n");
+        // Write header row for CSV
+        writer.append("Card Value,Click Count\n");
 
-        // Write data rows
+        // Write data rows in CSV format
         while (cursor.moveToNext()) {
             int cardValue = cursor.getInt(cardValueIndex);
             int clickCount = cursor.getInt(clickCountIndex);
 
-            writer.append(cardValue + ", " + clickCount + "\n");
+            writer.append(String.valueOf(cardValue)).append(",").append(String.valueOf(clickCount)).append("\n");
         }
         cursor.close();
         writer.flush();
     }
-
 
     // Handle permission request result
     @Override
