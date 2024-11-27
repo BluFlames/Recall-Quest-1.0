@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.recallquest10"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.miniproject.recallquest10"

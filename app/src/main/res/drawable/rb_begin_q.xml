@@ -2,8 +2,10 @@
     <!--solid android:color="#040404"/--> <!-- Button color -->
     <corners android:radius="55dp"/>
     <stroke
-        android:width="6dp"
-        android:color="#FEE715" />
-    <solid
-        android:color="#101820"/>
+        android:width="5dp"
+        android:color="#000000" />
+    <gradient
+        android:startColor="#990011"
+        android:endColor="#FCF6F5"
+        android:angle="90"/>
 </shape>

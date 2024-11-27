@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Start button's click event
         startButton.setOnClickListener(v -> {
-            v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_scale));
+            v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_shake));
             // Intent to navigate to AfterStartButton
             Intent intent = new Intent(MainActivity.this, AfterStartButton.class);
             startActivity(intent); // Start AfterStartButton when the Start button is pressed

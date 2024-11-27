@@ -25,7 +25,7 @@ public class AfterStartButton extends AppCompatActivity {
 
         // Practice button's click event
         practiceButton.setOnClickListener(v -> {
-            v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_scale));
+            v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_pulse));
             Intent intent = new Intent(AfterStartButton.this, PracticeActivity.class);
             startActivity(intent); // Navigate to PracticeActivity
         });

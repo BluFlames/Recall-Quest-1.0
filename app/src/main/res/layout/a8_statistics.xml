@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/purple_gradient"
     android:layout_height="match_parent">
 
     <Button
         android:id="@+id/export_easy_mode_button"
-        android:layout_width="329dp"
-        android:layout_height="149dp"
+        android:layout_width="317dp"
+        android:layout_height="90dp"
         android:background="@drawable/export_easy_button"
         android:fontFamily="@font/alata"
         android:text="@string/export_easy_mode_data"
@@ -19,12 +19,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.297" />
+        app:layout_constraintVertical_bias="0.454" />
 
     <Button
         android:id="@+id/export_medium_mode_button"
-        android:layout_width="297dp"
-        android:layout_height="145dp"
+        android:layout_width="362dp"
+        android:layout_height="99dp"
         android:background="@drawable/export_medium_button"
         android:fontFamily="@font/alata"
         android:text="@string/export_medium_mode_data"
@@ -34,8 +34,22 @@
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.68" />
+        app:layout_constraintVertical_bias="0.724" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alata"
+        android:text="@string/bullet_points"
+        android:textAlignment="center"
+        android:textColor="#00246B"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.108" />
 </androidx.constraintlayout.widget.ConstraintLayout>

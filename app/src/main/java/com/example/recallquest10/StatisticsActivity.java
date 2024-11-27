@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -50,6 +51,7 @@ public class StatisticsActivity extends AppCompatActivity {
         // Button to export Easy Mode database
         Button exportEasyModeButton = findViewById(R.id.export_easy_mode_button);
         exportEasyModeButton.setOnClickListener(v -> {
+            v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.glow));
             if (checkStoragePermission()) {
                 exportLatestTables(dbEasy.getReadableDatabase(), EASY_MODE_FOLDER_NAME, "EasyMode");
             }
@@ -58,6 +60,7 @@ public class StatisticsActivity extends AppCompatActivity {
         // Button to export Medium Mode database
         Button exportMediumModeButton = findViewById(R.id.export_medium_mode_button);
         exportMediumModeButton.setOnClickListener(v -> {
+            v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_scale));
             if (checkStoragePermission()) {
                 exportLatestTables(dbMedium.getReadableDatabase(), MEDIUM_MODE_FOLDER_NAME, "MediumMode");
             }

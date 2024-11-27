@@ -21,5 +21,9 @@
     <string name="time_30">Time : 30</string>
     <string name="export_easy_mode_data">Easy Mode Data</string>
     <string name="export_medium_mode_data">Medium Mode Data</string>
+    <string name="bullet_points">
+    &#8226; SQLite data needs root permission to be viewed.\n&#8226; .csv makes data accessible.\n&#8226; Easy to view and share.
+</string>
+
 
 </resources>
