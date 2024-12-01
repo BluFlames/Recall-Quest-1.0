@@ -82,6 +82,7 @@ public class HostActivity extends AppCompatActivity {
             }
         });
 
+        // Request peers once discovery is in progress
         manager.requestPeers(channel, peers -> {
             // Update the player list when new players are discovered
             connectedPlayers.clear(); // Clear existing list

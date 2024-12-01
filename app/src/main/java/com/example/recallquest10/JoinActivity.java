@@ -1,6 +1,6 @@
 package com.example.recallquest10;
 
-import android.annotation.SuppressLint;
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,7 +16,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -26,13 +25,11 @@ public class JoinActivity extends AppCompatActivity {
     WifiP2pManager.Channel channel;
     TextView hostNameTextView;
 
-    // Assuming the player list is a static list that will be updated as players join
     private final ArrayList<String> playerList = new ArrayList<>();
-
-    // List of predefined element names for players
     private static final String[] NAMES = {"Hydrogen", "Oxygen", "Carbon", "Nitrogen", "Helium"};
 
-    private static final int REQUEST_CODE_LOCATION_PERMISSION = 1; // Unique request code for location permission
+    private static final int REQUEST_CODE_LOCATION = 1;
+    private static final int REQUEST_CODE_WIFI_DEVICES = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,40 +39,35 @@ public class JoinActivity extends AppCompatActivity {
         hostNameTextView = findViewById(R.id.hostNameTextView);
         Button joinButton = findViewById(R.id.joinButton);
 
-        // Initialize Wi-Fi P2P
         manager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
         channel = manager.initialize(this, getMainLooper(), null);
 
-        // Set click listener on Join button
         joinButton.setOnClickListener(v -> {
-            displayHostName();
-            connectToHost();
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // Request location permission
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        REQUEST_CODE_LOCATION);
+            } else if (ActivityCompat.checkSelfPermission(this, Manifest.permission.NEARBY_WIFI_DEVICES) != PackageManager.PERMISSION_GRANTED) {
+                // Request nearby wifi devices permission
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.NEARBY_WIFI_DEVICES},
+                        REQUEST_CODE_WIFI_DEVICES);
+            } else {
+                // Permissions granted, proceed with connection
+                displayHostName();
+                connectToHost();
+            }
         });
-
-        // Request permissions if not granted
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                    REQUEST_CODE_LOCATION_PERMISSION);
-        }
     }
 
-    @SuppressLint("SetTextI18n")
     private void displayHostName() {
-        // Check permissions first (Android 6.0+ needs runtime permission)
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(this, "Permission for location access is required.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
         WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         if (wifiManager != null) {
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
             String ssid = wifiInfo.getSSID();
-
-            // Handle the case where SSID might not be returned properly (e.g., due to privacy settings)
             if (ssid != null && !ssid.equals("<unknown ssid>") && !ssid.equals("unknown ssid")) {
-                hostNameTextView.setText("Host: " + ssid.replace("\"", "")); // Display actual SSID as host name
+                hostNameTextView.setText("Host: " + ssid.replace("\"", ""));
             } else {
                 hostNameTextView.setText("Unknown SSID or private network");
             }
@@ -85,27 +77,18 @@ public class JoinActivity extends AppCompatActivity {
     }
 
     private void connectToHost() {
-        // Configuring a P2P connection
         WifiP2pConfig config = new WifiP2pConfig();
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, android.Manifest.permission.NEARBY_WIFI_DEVICES) != PackageManager.PERMISSION_GRANTED) {
-            // Handle missing permissions
-            Toast.makeText(this, "Permissions not granted.", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        // Here, you can add more settings to configure the connection if necessary, for example:
+        // config.deviceAddress = "<host_device_address>";
 
-        // Connect to the host
         manager.connect(channel, config, new WifiP2pManager.ActionListener() {
             @Override
             public void onSuccess() {
-                Toast.makeText(JoinActivity.this, "Connected to host.", Toast.LENGTH_SHORT).show();
-
-                // After successful connection, assign a random name from the predefined list
-                String playerName = getRandomName(); // Get a random player name
-                playerList.add(playerName); // Add the player to the list
-
-                // Start WaitingForHostActivity and pass the player list
+                Toast.makeText(JoinActivity.this, "Connected to host", Toast.LENGTH_SHORT).show();
+                String playerName = getRandomName();
+                playerList.add(playerName);
                 Intent intent = new Intent(JoinActivity.this, WaitingForHostActivity.class);
-                intent.putStringArrayListExtra("playerList", playerList);  // Pass the player list to the new activity
+                intent.putStringArrayListExtra("playerList", playerList);
                 startActivity(intent);
             }
 
@@ -116,24 +99,30 @@ public class JoinActivity extends AppCompatActivity {
         });
     }
 
-    // Method to get a random name from the predefined list
     private String getRandomName() {
         Random random = new Random();
-        int index = random.nextInt(NAMES.length); // Get a random index from the list
-        return NAMES[index] + " " + (playerList.size() + 1); // Append player number (e.g., Hydrogen 1)
+        int index = random.nextInt(NAMES.length);
+        return NAMES[index] + " " + (playerList.size() + 1);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == REQUEST_CODE_LOCATION_PERMISSION) {
+        if (requestCode == REQUEST_CODE_LOCATION) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission granted, call the function to display host name
-                displayHostName();
+                // Permission granted, now request nearby Wi-Fi devices permission if not granted yet
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.NEARBY_WIFI_DEVICES},
+                        REQUEST_CODE_WIFI_DEVICES);
             } else {
-                // Permission denied, notify user
-                Toast.makeText(this, "Location permission is required to connect to host.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Location permission denied. Cannot use Wi-Fi Direct.", Toast.LENGTH_SHORT).show();
+            }
+        } else if (requestCode == REQUEST_CODE_WIFI_DEVICES) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted, proceed with connection
+                connectToHost();
+            } else {
+                Toast.makeText(this, "Nearby Wi-Fi Devices permission denied.", Toast.LENGTH_SHORT).show();
             }
         }
     }

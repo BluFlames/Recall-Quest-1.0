@@ -18,7 +18,6 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-        versionNameSuffix = "Phase 1"
     }
 
     buildTypes {
