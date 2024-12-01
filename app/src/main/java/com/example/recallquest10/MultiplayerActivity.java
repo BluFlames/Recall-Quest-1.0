@@ -25,7 +25,7 @@ public class MultiplayerActivity extends AppCompatActivity {
 
         joinButton.setOnClickListener(v -> {
             v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_slide_up));
-            Intent intent = new Intent(MultiplayerActivity.this, HostActivity.class);
+            Intent intent = new Intent(MultiplayerActivity.this, JoinActivity.class);
             startActivity(intent);
         });
     }

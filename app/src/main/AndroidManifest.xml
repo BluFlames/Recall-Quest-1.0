@@ -10,7 +10,8 @@
 
     <!-- Add these permissions -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="32" />
+        android:maxSdkVersion="32"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
 
@@ -22,7 +23,7 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="Recall Quest Improved"
+        android:label="Recall Quest"
         android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="true"
         tools:targetApi="31"
@@ -46,6 +47,8 @@
         <activity android:name=".MediumMode" />
         <activity android:name=".DifficultMode" />
         <activity android:name=".HostActivity"/>
+        <activity android:name=".JoinActivity"/>
+        <activity android:name=".WaitingForHostActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

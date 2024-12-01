@@ -24,6 +24,18 @@
     <string name="bullet_points">
     &#8226; SQLite data needs root permission to be viewed.\n&#8226; .csv makes data accessible.\n&#8226; Easy to view and share.
 </string>
+    <string name="lan_nul">LAN Multiplayer</string>
+    <string name="hotspot_text">Turn on your phone\'s hotspot and make sure your friends\' are connected to your hotspot.</string>
+    <string name="host_start">Start Game</string>
+    <string name="players_host">Waiting for players to join</string>
+    <string name="join">Join</string>
+    <string name="leftBracket"><![CDATA[<]]></string>
+    <string name="host_name">Host Name</string>
+    <string name="rightBracket"><![CDATA[>]]></string>
+    <string name="just_a_bracket">Just a bracket</string>
+    <string name="just_left_bracket">Just left bracket</string>
+    <string name="players_in_the_game">Players in the Game</string>
+    <string name="name">Name</string>
 
 
 </resources>
